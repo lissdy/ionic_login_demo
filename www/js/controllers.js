@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
 
-    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+    .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$ionicPopup) {
         // Form data for the login modal
         $scope.loginData = {};
+        $scope.signUpDate = {};
 
         // Create the login modal that we will use later
         $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -29,8 +30,18 @@ angular.module('starter.controllers', [])
 
         // Open the sign up modal
         $scope.signUp = function () {
+            $scope.signUpDate = {};
             $scope.modal.hide();
             $scope.sign_up_modal.show();
+        };
+
+        $scope.password_not_match = function() {
+            var alertPopup = $ionicPopup.alert({
+                template: 'Please make sure password and confirm password are same values'
+            });
+            alertPopup.then(function(res) {
+                console.log('Thank you for not eating my delicious ice cream cone');
+            });
         };
 
         // Close the sign up modal
@@ -56,4 +67,11 @@ angular.module('starter.controllers', [])
                 }, 3000);
             }
         };
+
+        $scope.doSignUp = function () {
+            console.log('Doing signup', $scope.signUpDate);
+            if ($scope.signUpDate.password != $scope.signUpDate.confirm_password){
+                $scope.password_not_match();
+            }
+        }
     })

@@ -6,18 +6,25 @@
         </div>
     </ion-header-bar>
     <ion-content>
-        <form ng-submit="doLogin()" name="loginForm">
+        <form ng-submit="doSignUp()" name="signUpForm">
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Username</span>
-                    <input type="text" ng-model="loginData.username" required>
+                    <input type="text" name="username" placeholder="4-20 letter is allowed" ng-model="signUpDate.username" ng-minlength="4" ng-maxlength="20" required>
                 </label>
+
                 <label class="item item-input">
                     <span class="input-label">Password</span>
-                    <input type="password" ng-model="loginData.password" required>
+                    <input type="password" name="password" ng-model="signUpDate.password" placeholder="enter password,4-20 letter is allowed" ng-minlength="4" ng-maxlength="20" required>
                 </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Confirm Password</span>
+                    <input type="password" name="confirm_password" ng-model="signUpDate.confirm_password" placeholder="confirm password" required>
+                </label>
+
                 <label class="item">
-                    <button class="button button-block button-positive" type="submit" ng_disabled="!loginForm.$valid">Sign up</button>
+                    <button class="button button-block button-positive" type="submit" ng_disabled="!signUpForm.$valid">Sign up</button>
                 </label>
             </div>
         </form>
