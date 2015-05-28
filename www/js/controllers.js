@@ -45,9 +45,15 @@ angular.module('starter.controllers', [])
             // code if using a login system
             //if the user is valid
             if ($scope.loginData.username == 'lissdy') {
+                $scope.valid_user = false;
                 $timeout(function () {
                     $scope.closeLogin();
-                }, 1000);
+                }, 500);
+            }else{
+                $scope.valid_user = true;
+                $timeout(function () {
+                    $scope.valid_user = false;
+                }, 3000);
             }
         };
     })
