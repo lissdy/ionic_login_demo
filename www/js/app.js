@@ -40,3 +40,14 @@ angular.module('loginDemo', ['ionic', 'loginCtrl','localstorage'])
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/home');
     });
+
+
+var success = function(message) {
+    alert(message);
+}
+
+var failure = function() {
+    alert("Error calling Hello Plugin");
+}
+
+hello.greet("World", success, failure);
